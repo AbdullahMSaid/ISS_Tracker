@@ -35,20 +35,19 @@ st.write(f"**Current Longitude**: {iss_lon}")
 map_center = [iss_lat, iss_lon]
 m = folium.Map(location=map_center, zoom_start=2)
 
-
+# Define the file path for the custom icon (make sure this path is correct)
+iss_icon_path = os.path.join(os.getcwd(), "iss.gif")  # Assuming iss.gif is in the current directory
 
 # Step 1: Initialize a Folium map centered on an approximate ISS starting position
 m = folium.Map(location=[0, 0], zoom_start=2)
 
-# Step 2: Create a Custom Icon for the ISS Marker using an emoji
-plane_icon = folium.Marker(
+# Step 2: Add the marker to the map using the ISS icon
+folium.Marker(
     location=[0, 0],  # Starting position for the ISS marker (latitude, longitude)
-    icon=folium.Icon(icon='plane', color='blue'),  # Use 'plane' icon for the marker
+    icon=folium.CustomIcon(icon_image=iss_icon_path, icon_size=(30, 30)),  # Adjust size as needed
     popup="International Space Station",
-)
+).add_to(m)
 
-# Step 3: Add the marker to the map using the custom icon
-plane_icon.add_to(m)
 
 # Save the map to an HTML file
 m.save("iss_map.html")
