@@ -4,6 +4,7 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 from geopy.geocoders import Nominatim
+import time
 import os
 
 # Page setup
@@ -37,12 +38,19 @@ m = folium.Map(location=map_center, zoom_start=2)
 # Define the file path for the custom icon (make sure this path is correct)
 iss_icon_path = os.path.join(os.getcwd(), "iss.gif")  # Assuming iss.gif is in the current directory
 
-# Step 2: Add the marker to the map using the updated ISS coordinates
+# Step 1: Initialize a Folium map centered on an approximate ISS starting position
+m = folium.Map(location=[0, 0], zoom_start=2)
+
+# Step 2: Add the marker to the map using the ISS icon
 folium.Marker(
-    location=[iss_lat, iss_lon],  # Use the current latitude and longitude
+    location=[iss_lat, iss_lon],  # Starting position for the ISS marker (latitude, longitude)
     icon=folium.CustomIcon(icon_image=iss_icon_path, icon_size=(30, 30)),  # Adjust size as needed
     popup="International Space Station",
 ).add_to(m)
+# Save the map to an HTML file
+m.save("iss_map.html")
+
+
 
 # Display the map
 st_data = st_folium(m, width=725, height=500)
