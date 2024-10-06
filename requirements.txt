@@ -3,3 +3,4 @@ folium
 streamlit-folium
 geocoder
 requests
+geopy
