@@ -64,7 +64,12 @@ Once the server is up, it will open a new tab in your web browser displaying the
 
 ## Screenshots
 
-<!-- Add screenshots of the application here -->
+#### WebApp Version (Streamit)
+![Streamlit_Version](ISS_Streamlit.png)
+
+#### App Version (Streamit)
+![Pygame](DeskTopAPP.png)
+
 
 ## Future Enhancements 
 
